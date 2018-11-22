@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
-import static com.elasticDataLoader.common.DateTimeUtil.*;
+import static com.cryptoStreamLoader.common.DateTimeUtil.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 

@@ -2,8 +2,8 @@ package com.cryptoStreamLoader.common;
 
 import org.junit.Test;
 
-import static com.elasticDataLoader.common.StringFrequencyUtil.getStringContentFromLogString;
-import static com.elasticDataLoader.common.StringFrequencyUtil.getTimeStampInEpochFromLogString;
+import static com.cryptoStreamLoader.common.StringFrequencyUtil.getStringContentFromLogString;
+import static com.cryptoStreamLoader.common.StringFrequencyUtil.getTimeStampInEpochFromLogString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
