@@ -28,6 +28,7 @@
         <log4j.version>2.9.1</log4j.version>
 		<skipTests>false</skipTests>
         <bigtable.version>1.0.0</bigtable.version>
+<!--		<jetty.version>9.3.7.v20160115</jetty.version>-->
 
         <appengine.version>1.9.26</appengine.version>
         <gcloud.plugin.version>2.0.9.89.v20151202</gcloud.plugin.version>
@@ -37,6 +38,18 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.coinbase.api</groupId>
+			<artifactId>coinbase-java</artifactId>
+			<version>1.10.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.joda</groupId>
+			<artifactId>joda-money</artifactId>
+			<version>0.12</version>
+		</dependency>
 
 		<dependency>
         <groupId>org.springframework.data</groupId>
@@ -79,6 +92,70 @@
             <version>5.6.10</version>
         </dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.neovisionaries</groupId>
+			<artifactId>nv-websocket-client</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<!-- To write basic websockets against -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-api</artifactId>
+			<version>9.4.12.RC2</version>
+		</dependency>
+		<!-- To run websockets in embedded server -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-server</artifactId>
+			<version>9.4.12.RC2</version>
+		</dependency>
+		<!-- To run websockets client -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-client</artifactId>
+			<version>9.4.12.RC2</version>
+		</dependency>
+
+		<!-- To write basic javax.websocket against -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!-- To run javax.websocket in embedded server -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>javax-websocket-server-impl</artifactId>
+			<version>9.4.12.RC2</version>
+		</dependency>
+		<!-- To run javax.websocket client -->
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>javax-websocket-client-impl</artifactId>
+			<version>9.4.12.RC2</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
 		<dependency>
@@ -92,19 +169,6 @@
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.jetty.websocket</groupId>
-            <artifactId>websocket-client</artifactId>
-            <version>9.3.0.M2</version>
-        </dependency>
-
-              <dependency>
-                <groupId>com.google.appengine</groupId>
-                <artifactId>appengine-api-1.0-sdk</artifactId>
-                <version>${appengine.version}</version>
-            </dependency>
-
 
         <dependency>
             <groupId>com.vividsolutions</groupId>
@@ -188,6 +252,22 @@
 			<version>${elasticsearch.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.9.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.8.7</version>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -246,34 +326,24 @@
 	<repositories>
 		<!-- When next release version of spring-boot-starter-data-elasticsearch
             artifact appears you won't need this repository -->
+
+		<repository>
+			<id>repository.spring.release</id>
+			<name>Spring GA Repository</name>
+			<url>http://repo.spring.io/release</url>
+		</repository>
+
+		<repository>
+			<id>repository.spring.milestone</id>
+			<name>Spring Milestone Repository</name>
+			<url>http://repo.spring.io/milestone</url>
+		</repository>
+
 		<repository>
 			<id>spring-libs-snapshot</id>
 			<name>Spring Snapshot Repository</name>
 			<url>http://repo.spring.io/libs-snapshot</url>
 		</repository>
-
-	    <repository>
-	      <id>snapshots-repo</id>
-	      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-	      <releases><enabled>false</enabled></releases>
-	      <snapshots><enabled>true</enabled></snapshots>
-	    </repository>
-	    <repository>
-	      <releases>
-	        <enabled>true</enabled>
-	        <updatePolicy>daily</updatePolicy>
-	        <checksumPolicy>warn</checksumPolicy>
-	      </releases>
-	      <snapshots>
-	        <enabled>false</enabled>
-	        <updatePolicy>never</updatePolicy>
-	        <checksumPolicy>fail</checksumPolicy>
-	      </snapshots>
-	      <id>google-maven-central</id>
-	      <name>Google Maven Central</name>
-	      <url>https://maven-central.storage.googleapis.com</url>
-	      <layout>default</layout>
-	    </repository>
 
 	</repositories>
 
@@ -288,7 +358,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -306,7 +375,6 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-
 
 		</plugins>
 	</build>

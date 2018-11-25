@@ -29,6 +29,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 @Service
+@org.eclipse.jetty.websocket.api.annotations.WebSocket
 public class CoinbaseWebSocketServiceImpl implements CoinbaseWebSocketService{
 
     static Logger LOG = LoggerFactory.getLogger(CoinbaseWebSocketServiceImpl.class);
@@ -37,14 +38,14 @@ public class CoinbaseWebSocketServiceImpl implements CoinbaseWebSocketService{
      * Send this object as soon as we connect to the Coinbase Market API
      * to signify we want to subscribe to the BTC-USD feed.
      */
-    /*private static final String COINBASE_SUBSCRIBE_MESSAGE =
-            "{\n" + "    \"type\": \"subscribe\",\n" + "    \"product_id\": \"BTC-USD\"\n" + "}";*/
-
     private static final String COINBASE_SUBSCRIBE_MESSAGE =
+            "{\n" + "    \"type\": \"subscribe\",\n" + "    \"product_id\": \"BTC-USD\"\n" + "}";
+
+    /*private static final String COINBASE_SUBSCRIBE_MESSAGE =
             "{\n" +
                     "    \"type\": \"subscribe\",\n" +
                     "    \"channels\": [{ \"name\": \"heartbeat\", \"product_ids\": [\"ETH-EUR\"] }]\n" +
-                    "}";
+                    "}";*/
 
     @PostConstruct
     public void init() throws Exception{

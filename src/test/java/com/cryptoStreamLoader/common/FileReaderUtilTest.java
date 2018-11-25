@@ -5,10 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 
-import static com.cryptoStreamLoader.common.FileReaderUtil.*;
+import static com.cryptoStreamLoader.common.FileReaderUtil.createNewFile;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -36,39 +34,6 @@ public class FileReaderUtilTest {
         }
     }
 
-    @Test
-    public void test_Assert_Read_FileText_To_Lines() throws Exception{
-
-        //given
-        Path source_path_File_1 = Paths.get(getClass().getResource(test_Data_File_1).toURI());
-
-        //when
-        List<String> linesReadFromFile = readFileTextToLines(source_path_File_1);
-
-        //then
-        assertNotNull(linesReadFromFile);
-        assertTrue(linesReadFromFile.size()==40);
-    }
-
-    @Test
-    public void test_Assert_Copy_File_Contents_From_Source_To_Destination() throws Exception{
-
-        //given
-        Path source_path_File_1 = Paths.get(getClass().getResource(test_Data_File_1).toURI());
-
-        testFile_1 = fileDataDirectory+ "targetData.log";
-
-        testFilePath_1 = createNewFile(testFile_1);
-
-        //when
-        copyDataFromSourceToDestination(source_path_File_1,testFilePath_1);
-
-        //then
-        List<String> destinationLines = readFileTextToLines(testFilePath_1);
-
-        assertNotNull(destinationLines);
-        assertTrue(destinationLines.size()==40);
-    }
 
     @Test
     public void test_Assert_Create_New_File() throws Exception{

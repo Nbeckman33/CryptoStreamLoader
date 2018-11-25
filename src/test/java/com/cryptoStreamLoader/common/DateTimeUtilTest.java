@@ -125,10 +125,10 @@ public class DateTimeUtilTest {
         //given
         String format  = "yyyyMMdd";
         LocalDateTime date = LocalDateTime.of(2018,11 ,18 ,00 ,00 );
-        String formatted_Date_String_Actual_Expected = "20181119";
+        String formatted_Date_String_Actual_Expected = "20181118";
 
         //when
-        String formatted_Date_String_Actual = DateTimeUtil.getDateAsFormattedString(null,null);
+        String formatted_Date_String_Actual = DateTimeUtil.getDateAsFormattedString(null,date);
 
         //then
         assertNotNull(formatted_Date_String_Actual);
