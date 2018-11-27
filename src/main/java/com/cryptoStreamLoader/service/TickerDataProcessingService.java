@@ -92,6 +92,7 @@ public class TickerDataProcessingService {
                                             .auditTimeStamp(DateTimeUtil.getCurrentTimeStamp())
                                             .currency(currency).price(priceModel.getPrice())
                                             .tickerTime(priceModel.getTime())
+                                            //.tickerTimeInEpochMillis(getTimeStampInEpochMillis(priceModel.getTime()))
                                             .build();
 
             }

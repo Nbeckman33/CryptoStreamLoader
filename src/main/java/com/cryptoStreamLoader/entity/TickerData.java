@@ -49,13 +49,13 @@ public class TickerData {
     private LocalDateTime tickerTime;
 
 
+
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd'T'HH:mm:ss")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @Field(type = FieldType.Date,  store = true,
             format = DateFormat.custom, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime auditTimeStamp;
-
-
 
 }
